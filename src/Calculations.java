@@ -5,6 +5,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 
 public class Calculations implements ActionListener {
 	
@@ -15,6 +16,9 @@ public class Calculations implements ActionListener {
 	JButton button3 = new JButton();
 	JButton button4 = new JButton();
 	
+	JTextField input1= new JTextField(5);
+	JTextField input2= new JTextField(5);
+	
 	Calculations(){
 		frame.setVisible(true);
 		frame.setTitle("Calculator");
@@ -22,6 +26,7 @@ public class Calculations implements ActionListener {
 		button1.setVisible(true);
 		button1.setText("Add");
 		button1.addActionListener(this);
+		
 		
 		button2.setVisible(true);
 		button2.setText("Subtract");
@@ -35,6 +40,10 @@ public class Calculations implements ActionListener {
 		button4.setText("Divide");
 		button4.addActionListener(this);
 		
+		
+		
+		panel.add(input1);
+		panel.add(input2);
 		panel.add(button1);
 		panel.add(button2);
 		panel.add(button3);
@@ -43,11 +52,7 @@ public class Calculations implements ActionListener {
 		frame.add(panel);
 		frame.pack();
 		
-		String number = JOptionPane.showInputDialog("What number do you want to use?");
-		int num= Integer.parseInt(number);
-		System.out.println(num);
-		
-		JOptionPane.showMessageDialog(null, "Choose which operation to do");
+		JOptionPane.showMessageDialog(null, "Put in two number, then select which operation to do.");
 		
 		
 	}
@@ -55,14 +60,28 @@ public class Calculations implements ActionListener {
 	public static void main(String[] args) {
 
 		Calculations cal = new Calculations();
-		
+
 		
 }
 
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		// TODO Auto-generated method stub
+		int num = Integer.parseInt(input1.getText());
+		int num2 = Integer.parseInt(input2.getText());
 		
-
+		if(arg0.getSource()==button1){
+			int num3 = num+num2;
+			System.out.println(num3);
+		} else if(arg0.getSource()==button2){
+			int num3 = num-num2;
+			System.out.println(num3);
+		} else if(arg0.getSource()==button3){
+			int num3 = num*num2;
+			System.out.println(num3);
+		} else if(arg0.getSource()==button4){
+			int num3 = num/num2;
+			System.out.println(num3);
+		}
 }
 }
